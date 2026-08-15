@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madi | Designer Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-primary: #121212;
+            --text-secondary: #777777;
+            --text-light: #e0e0e0;
+            --green-accent: #93e54b;
+            /* Adjusted to match the header progress bar in ref */
+            --gray-bg: #f7f7f7;
+            --border-color: #f0f0f0;
+            --card-shadow: 0 24px 48px rgba(0, 0, 0, 0.04);
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* HEADER */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 32px 24px;
+            font-size: 14px;
+            font-weight: 500;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .header-center {
+            display: flex;
+            gap: 6px;
+            flex-grow: 1;
+            max-width: 260px;
+            margin: 0 40px;
+        }
+
+        .progress-bar {
+            height: 3px;
+            flex: 1;
+            background-color: var(--text-light);
+            border-radius: 2px;
+        }
+
+        .progress-bar.active {
+            background-color: var(--green-accent);
+        }
+
+        .header-right {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            width: 60px;
+            /* Placeholder for balance */
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding-top: 40px;
+            padding-bottom: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-title-container {
+            position: relative;
+            width: 100%;
+            height: 220px;
+        }
+
+        .hero-title {
+            font-size: 16vw;
+            font-weight: 400;
+            color: var(--text-light);
+            line-height: 1;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            letter-spacing: -0.04em;
+        }
+
+        .hero-image-wrapper {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 170px;
+            height: 220px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            z-index: 2;
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            width: 100%;
+            margin-top: 80px;
+            position: relative;
+            z-index: 3;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .card-tags-top {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .tag-status {
+            background-color: #C3FEDD;
+            color: #064e3b;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+
+        .tag-contact {
+            background-color: #C3FEDD;
+            color: #064e3b;
+            padding: 6px 6px 6px 16px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: opacity 0.3s ease;
+        }
+
+        .tag-contact:hover {
+            opacity: 0.8;
+        }
+
+        .tag-portfolio {
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 6px 6px 6px 16px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: opacity 0.3s ease;
+        }
+
+        .tag-portfolio:hover {
+            opacity: 0.8;
+        }
+
+        .icon-circle {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .white-circle {
+            background-color: #ffffff;
+            color: #064e3b;
+        }
+
+        .dark-circle {
+            background-color: #334155;
+            color: #ffffff;
+        }
+
+        .hero-greeting {
+            font-size: 32px;
+            font-weight: 700;
+            color: #064e3b;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-text {
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .hero-location {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .card-tags-bottom {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+
+        .tag-skill {
+            border: 1px solid var(--border-color);
+            padding: 8px 18px;
+            border-radius: 100px;
+            font-size: 13px;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tag-skill:hover {
+            border-color: #d1fae5;
+            background-color: #f8fafc;
+        }
+
+        /* TOOLBOX SECTION */
+        .toolbox {
+            padding: 10px 48px 80px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 44px;
+            font-weight: 300;
+            margin-bottom: 48px;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            text-align: left;
+        }
+
+        .toolbox-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 64px;
+            flex-wrap: wrap;
+        }
+
+        .tool-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+        }
+
+        .tool-icon:hover {
+            transform: translateY(-4px);
+        }
+
+        .toolbox-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .tool-card {
+            text-align: center;
+            padding: 20px 16px 28px;
+        }
+
+        .tool-card-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            transition: opacity 0.25s ease;
+        }
+
+        .tool-card-link:hover {
+            opacity: 0.82;
+        }
+
+        .tool-card-link h4 {
+            color: var(--text-primary);
+        }
+
+        .tool-card-images {
+            position: relative;
+            height: 110px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .tool-card-images img {
+            width: 72px;
+            height: 72px;
+            object-fit: cover;
+            border-radius: 18px;
+            border: 3px solid #fff;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+            position: absolute;
+            transition: transform 0.3s ease;
+        }
+
+        .tool-card-images img:nth-child(1) {
+            left: 50%;
+            transform: translateX(-90px) rotate(-8deg);
+            z-index: 1;
+        }
+
+        .tool-card-images img:nth-child(2) {
+            left: 50%;
+            transform: translateX(-36px);
+            z-index: 3;
+        }
+
+        .tool-card-images img:nth-child(3) {
+            left: 50%;
+            transform: translateX(18px) rotate(6deg);
+            z-index: 2;
+        }
+
+        .tool-card:hover .tool-card-images img:nth-child(1) {
+            transform: translateX(-100px) rotate(-12deg) translateY(-4px);
+        }
+
+        .tool-card:hover .tool-card-images img:nth-child(2) {
+            transform: translateX(-36px) translateY(-8px);
+        }
+
+        .tool-card:hover .tool-card-images img:nth-child(3) {
+            transform: translateX(28px) rotate(8deg) translateY(-4px);
+        }
+
+        .tool-card h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .tool-card p {
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 220px;
+            margin: 0 auto;
+        }
+
+        /* PORTFOLIO SECTION */
+        .portfolio {
+            padding: 10px 48px 80px;
+        }
+
+        .section-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-light);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .portfolio-item {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+            background-color: var(--gray-bg);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* EXPERIENCES SECTION */
+        .experiences {
+            padding: 10px 48px 120px;
+        }
+
+        .exp-title {
+            font-size: 36px;
+            font-weight: 400;
+            margin-bottom: 80px;
+            color: var(--text-primary);
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 72px;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 40px;
+        }
+
+        .timeline-year {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            width: 80px;
+            flex-shrink: 0;
+            padding-top: 14px;
+        }
+
+        .timeline-content {
+            flex-grow: 1;
+            max-width: 650px;
+        }
+
+        .timeline-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .timeline-number {
+            font-size: 48px;
+            font-weight: 300;
+            color: #93e54b;
+            /* green accent */
+            line-height: 1;
+        }
+
+        .timeline-number span {
+            color: var(--text-light);
+        }
+
+        .timeline-role {
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .timeline-desc {
+            list-style: none;
+        }
+
+        .timeline-desc li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .timeline-desc li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #93e54b;
+        }
+
+        /* RESPONSIVE */
+        @media (min-width: 1200px) {
+            .hero-title {
+                font-size: 160px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-card {
+                padding: 40px;
+            }
+
+            .hero-title-container {
+                height: 160px;
+            }
+
+            .hero-image-wrapper {
+                width: 160px;
+                height: 200px;
+                top: 20px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-center {
+                display: none;
+            }
+
+            .hero-title-container {
+                height: auto;
+                margin-bottom: 40px;
+            }
+
+            .hero-title {
+                position: relative;
+                font-size: 18vw;
+                transform: none;
+                left: auto;
+                white-space: normal;
+                word-break: break-word;
+                text-align: center;
+            }
+
+            .hero-image-wrapper {
+                position: relative;
+                top: auto;
+                left: auto;
+                transform: none;
+                margin: -40px auto 0;
+            }
+
+            .hero-card {
+                margin-top: 40px;
+                padding: 32px 24px;
+            }
+
+            .toolbox-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .timeline-year {
+                padding-top: 0;
+                width: auto;
+            }
+
+            .section-title,
+            .exp-title {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-left">
+            <span>— MADI</span>
+        </div>
+        <div class="header-center">
+            <div class="progress-bar active"></div>
+            <div class="progress-bar active"></div>
+            <div class="progress-bar"></div>
+        </div>
+        <div class="header-right">
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero container">
+            <div class="hero-title-container">
+                <h1 class="hero-title">Sobre Madi</h1>
+                <div class="hero-image-wrapper">
+                    <img src="fotoperfil.jpg" alt="Foto de Perfil Madi">
+                </div>
+            </div>
+
+            <div class="hero-card">
+                <div class="card-tags-top">
+                    <span class="tag-status">● Disponível para trabalho</span>
+                    <a href="https://wa.me/44991393909" class="tag-contact" target="_blank">Fale comigo <span
+                            class="icon-circle white-circle">↗</span></a>
+                    <a href="https://drive.google.com/file/d/1VqPMgonTtYQZ0jb8jzsxT-XOBs0gnr05/view?usp=sharing"
+                        class="tag-portfolio" target="_blank">Ver portfólio <span
+                            class="icon-circle dark-circle">↗</span></a>
+                </div>
+
+                <h2 class="hero-greeting">Olá!</h2>
+                <p class="hero-text">
+                    Meu nome é Mayara, mas sou mais conhecida como Madi. Designer Gráfico e UX/UI com mais de 8 anos de
+                    experiência na criação de materiais digitais e impressos. Atuei em agências de marketing e projetos
+                    de diferentes segmentos, desenvolvendo identidades visuais, peças para redes sociais, materiais
+                    gráficos, interfaces digitais e websites.
+                </p>
+                <p class="hero-text">
+                    Tenho experiência com branding, design para marketing, fechamento de arquivos para gráfica e criação
+                    de experiências centradas no usuário. Estou sempre buscando aprimorar meus conhecimentos seja em
+                    UX/UI, comportamento do usuário e soluções que unem estética, estratégia e funcionalidade.
+                </p>
+
+                <div class="hero-location">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    Brasil, Paraná
+                </div>
+
+                <div class="card-tags-bottom">
+                    <span class="tag-skill">Design Gráfico</span>
+                    <span class="tag-skill">Design de UI/UX</span>
+                    <span class="tag-skill">Marketing</span>
+                    <span class="tag-skill">Marketing Digital</span>
+                    <span class="tag-skill">Branding</span>
+                    <span class="tag-skill">Criação de Conteúdo</span>
+                    <span class="tag-skill">Animações Web</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- TOOLBOX SECTION -->
+        <section class="toolbox container">
+            <h2 class="section-title">My creative<br>toolbox</h2>
+
+            <div class="toolbox-icons">
+                <!-- Photoshop -->
+                <div class="tool-icon" style="padding: 0; overflow: hidden;">
+                    <img src="photoshop.svg.webp" alt="Photoshop" style="width:100%;height:100%;object-fit:cover;">
+                </div>
+                <!-- Figma -->
+                <div class="tool-icon" style="padding: 0; overflow: hidden;">
+                    <img src="figma.png" alt="Figma" style="width:100%;height:100%;object-fit:cover;">
+                </div>
+                <!-- Illustrator -->
+                <div class="tool-icon" style="padding: 0; overflow: hidden;">
+                    <img src="ilustrator.png" alt="Illustrator" style="width:100%;height:100%;object-fit:cover;">
+                </div>
+                <!-- After Effects -->
+                <div class="tool-icon" style="padding: 0; overflow: hidden;">
+                    <img src="after.svg.webp" alt="After Effects" style="width:100%;height:100%;object-fit:cover;">
+                </div>
+                <!-- Adobe XD -->
+                <div class="tool-icon" style="padding: 0; overflow: hidden;">
+                    <img src="xd.png" alt="Adobe XD" style="width:100%;height:100%;object-fit:cover;">
+                </div>
+                <!-- Notion -->
+                <div class="tool-icon" style="padding: 0; overflow: hidden;">
+                    <img src="notion.png" alt="Notion" style="width:100%;height:100%;object-fit:cover;">
+                </div>
+                <!-- WordPress -->
+                <div class="tool-icon" style="padding: 0; overflow: hidden;">
+                    <img src="wordpress.png" alt="WordPress" style="width:100%;height:100%;object-fit:cover;">
+                </div>
+                <!-- Canva -->
+                <div class="tool-icon" style="padding: 0; overflow: hidden;">
+                    <img src="canva.jpg" alt="Canva" style="width:100%;height:100%;object-fit:cover;">
+                </div>
+                <!-- CapCut -->
+                <div class="tool-icon" style="padding: 0; overflow: hidden;">
+                    <img src="capcut.png" alt="CapCut" style="width:100%;height:100%;object-fit:cover;">
+                </div>
+                <!-- Premiere -->
+                <div class="tool-icon" style="padding: 0; overflow: hidden;">
+                    <img src="premier.png" alt="Adobe Premiere" style="width:100%;height:100%;object-fit:cover;">
+                </div>
+            </div>
+
+            <div class="toolbox-cards">
+                <div class="tool-card">
+                    <div class="tool-card-images">
+                        <img src="ux1.png" alt="UX/UI 1">
+                        <img src="ux2.png" alt="UX/UI 2">
+                        <img src="ux3.png" alt="UX/UI 3">
+                    </div>
+                    <h4>🔒 UX/UI design</h4>
+                    <p>Crie sites e landing pages intuitivos, otimizando a experiência e alinhando-os à marca.</p>
+                </div>
+                <a href="https://drive.google.com/drive/folders/17XINd8d5Ynq3L1SQyLMvhEdVXaGHVxFF?usp=sharing"
+                    target="_blank" class="tool-card tool-card-link">
+                    <div class="tool-card-images">
+                        <img src="video1.jpg" alt="Vídeos 1">
+                        <img src="video2.jpg" alt="Vídeos 2">
+                        <img src="video3.jpg" alt="Vídeos 3">
+                    </div>
+                    <h4>Vídeos ↗</h4>
+                    <p>Criação de vídeos para redes sociais, transmitindo mensagens com clareza e alinhamento da marca.
+                    </p>
+                </a>
+                <div class="tool-card">
+                    <div class="tool-card-images">
+                        <img src="branding1.png" alt="Branding 1">
+                        <img src="branding2.png" alt="Branding 2">
+                        <img src="branding3.png" alt="Branding 3">
+                    </div>
+                    <h4>🔒 Branding</h4>
+                    <p>Personal brand development for creators and companies.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORTFOLIO SECTION -->
+        <section class="portfolio container">
+            <span class="section-label">projects</span>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="portfoliomadi01.png" alt="Projeto Portfolio 01" loading="lazy">
+                </div>
+                <div class="portfolio-item">
+                    <img src="portfoliomadi02.png" alt="Projeto Portfolio 02" loading="lazy">
+                </div>
+                <div class="portfolio-item">
+                    <img src="portfoliomadi03.png" alt="Projeto Portfolio 03" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCES SECTION -->
+        <section class="experiences container">
+            <span class="section-label">Experiences</span>
+            <h2 class="exp-title">Currículo</h2>
+
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-number"><span>/</span>05</div>
+                            <h3 class="timeline-role">Agência Aurius</h3>
+                        </div>
+                        <ul class="timeline-desc">
+                            <li>Pesquisar o mercado para criar estratégias sólidas.</li>
+                            <li>Desenvolvimento de conteúdo e materiais de marketing.</li>
+                            <li>Ajudando marcas a crescer com estratégias de branding e digitais.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">all time</div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-number"><span>/</span>04</div>
+                            <h3 class="timeline-role">freelancer</h3>
+                        </div>
+                        <ul class="timeline-desc">
+                            <li>Trabalhando de forma independente com clientes por meio de indicações e plataformas de
+                                terceiros.</li>
+                            <li>Criação de sites, identidades de marca e materiais de marketing.</li>
+                            <li>Gerenciamento de projetos, da concepção à entrega final.</li>
+                            <li>Aprendendo princípios avançados de web design e UX/UI.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2022</div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-number"><span>/</span>03</div>
+                            <h3 class="timeline-role">Designer Senior</h3>
+                        </div>
+                        <ul class="timeline-desc">
+                            <li>Wireframing: Crie wireframes de baixa fidelidade para mapear a estrutura do site.</li>
+                            <li>Criação de Guia de Estilo: Desenvolver uma linguagem de design que inclua cores, fontes
+                                e elementos de interface (UI).</li>
+                            <li>Criação de identidade de marca para empresas.</li>
+                            <li>Desenvolvimento de embalagens e preparação de arquivos para produção.</li>
+                            <li>Fervilha Agência | Curitiba - PR</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2021</div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-number"><span>/</span>02</div>
+                            <h3 class="timeline-role">Designer Pleno</h3>
+                        </div>
+                        <ul class="timeline-desc">
+                            <li>Criação de posts para redes sociais e materiais de marketing.</li>
+                            <li>Edição de imagens de produtos para sites.</li>
+                            <li>Criação de elementos visuais principais e branding.</li>
+                            <li>Mam Agência | Maringá - PR</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2018</div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-number"><span>/</span>01</div>
+                            <h3 class="timeline-role">Primeiros passos no marketing</h3>
+                        </div>
+                        <ul class="timeline-desc">
+                            <li>Estágio em Publicidade: Aprendizado sobre redes sociais e marketing.</li>
+                            <li>Criação de conteúdo e gestão de redes sociais para diferentes marcas.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Formações Acadêmicas -->
+                <div style="display: flex; flex-wrap: wrap; margin-bottom: 60px; font-family: sans-serif;">
+                    <!-- Coluna do Ano -->
+                    <div style="flex: 0 0 150px; color: #777; font-size: 18px; padding-top: 10px;">
+                        2017 - 2020
+                    </div>
+
+                    <!-- Coluna do Conteúdo -->
+                    <div style="flex: 1; min-width: 300px;">
+                        <h2
+                            style="font-size: 28px; color: #111; font-weight: 500; margin-top: 0; margin-bottom: 20px; display: flex; align-items: center;">
+                            <span
+                                style="color: #90E040; font-weight: 300; margin-right: 15px; font-size: 40px;">/</span>
+                            Formações acadêmicas
+                        </h2>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li
+                                style="position: relative; padding-left: 20px; margin-bottom: 15px; color: #666; font-size: 18px;">
+                                <span
+                                    style="position: absolute; left: 0; top: 8px; width: 8px; height: 8px; border-radius: 50%; background-color: #90E040;"></span>
+                                Graduação: Comunicação Social Publicidade e Propaganda - Unoeste
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Cursos e Especializações -->
+                <div style="display: flex; flex-wrap: wrap; margin-bottom: 20px; font-family: sans-serif;">
+                    <!-- Coluna do Ano -->
+                    <div style="flex: 0 0 150px; color: #777; font-size: 18px; padding-top: 1px;">
+                        2019 - 2024
+                    </div>
+
+                    <!-- Coluna do Conteúdo -->
+                    <div style="flex: 1; min-width: 300px;">
+                        <h2
+                            style="font-size: 28px; color: #111; font-weight: 500; margin-top: 0; margin-bottom: 20px; display: flex; align-items: center;">
+                            <span
+                                style="color: #90E040; font-weight: 300; margin-right: 15px; font-size: 40px;">/</span>
+                            Cursos e especializações
+                        </h2>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li
+                                style="position: relative; padding-left: 20px; margin-bottom: 15px; color: #666; font-size: 18px;">
+                                <span
+                                    style="position: absolute; left: 0; top: 8px; width: 8px; height: 8px; border-radius: 50%; background-color: #90E040;"></span>
+                                <strong>Nunca pare de vender | Marketing</strong> - Leandro Ladeira (2024)
+                            </li>
+                            <li
+                                style="position: relative; padding-left: 20px; margin-bottom: 15px; color: #666; font-size: 18px;">
+                                <span
+                                    style="position: absolute; left: 0; top: 8px; width: 8px; height: 8px; border-radius: 50%; background-color: #90E040;"></span>
+                                <strong>UX/UI DESIGN</strong> - Coursera Google (2023)
+                            </li>
+                            <li
+                                style="position: relative; padding-left: 20px; margin-bottom: 15px; color: #666; font-size: 18px;">
+                                <span
+                                    style="position: absolute; left: 0; top: 8px; width: 8px; height: 8px; border-radius: 50%; background-color: #90E040;"></span>
+                                <strong>Formação em Social Media</strong> - Ícaro de Carvalho (2023)
+                            </li>
+                            <li
+                                style="position: relative; padding-left: 20px; margin-bottom: 15px; color: #666; font-size: 18px;">
+                                <span
+                                    style="position: absolute; left: 0; top: 8px; width: 8px; height: 8px; border-radius: 50%; background-color: #90E040;"></span>
+                                <strong>Um plano Prático | Copyright & marketing</strong> - Bettina Rudolph (2023)
+                            </li>
+                            <li
+                                style="position: relative; padding-left: 20px; margin-bottom: 15px; color: #666; font-size: 18px;">
+                                <span
+                                    style="position: absolute; left: 0; top: 8px; width: 8px; height: 8px; border-radius: 50%; background-color: #90E040;"></span>
+                                <strong>Criação Avançada | Manipulação de imagem</strong> - Jack Usephot (2022)
+                            </li>
+                            <li
+                                style="position: relative; padding-left: 20px; margin-bottom: 15px; color: #666; font-size: 18px;">
+                                <span
+                                    style="position: absolute; left: 0; top: 8px; width: 8px; height: 8px; border-radius: 50%; background-color: #90E040;"></span>
+                                <strong>Primeira Classe | Retouch & Manipulação</strong> - Lucas Rosa (2021)
+                            </li>
+                            <li
+                                style="position: relative; padding-left: 20px; margin-bottom: 15px; color: #666; font-size: 18px;">
+                                <span
+                                    style="position: absolute; left: 0; top: 8px; width: 8px; height: 8px; border-radius: 50%; background-color: #90E040;"></span>
+                                <strong>Comunidade Tráfego Pago</strong> - Pedro Sobral (2021)
+                            </li>
+                            <li
+                                style="position: relative; padding-left: 20px; margin-bottom: 15px; color: #666; font-size: 18px;">
+                                <span
+                                    style="position: absolute; left: 0; top: 8px; width: 8px; height: 8px; border-radius: 50%; background-color: #90E040;"></span>
+                                <strong>Manipulação de imagem</strong> - Rafael Ferreira (2019)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+
+</html>
